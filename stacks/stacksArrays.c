@@ -3,11 +3,13 @@
 
 #define MAX 10
 
+//queue definition
 typedef struct stack{
     int dataArr[MAX];
     int top;
 }stack;
 
+//prototypes
 void initialize(stack *s);
 void push(stack *s, int data);
 void pop(stack *s);
@@ -16,6 +18,7 @@ int isFull(stack s);
 void peek(stack s);
 void display(stack s);
 
+//driver function
 void main(){
     stack test;
     initialize(&test);
@@ -30,6 +33,7 @@ void main(){
 
 }
 
+//function definitions
 void initialize(stack *s){
     s->top = -1;
 }
