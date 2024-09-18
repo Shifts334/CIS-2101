@@ -15,9 +15,9 @@ int isempty(Sets *set);
 void display(Sets *set);
 void insertSorted(Sets *set, int num);
 void delete(Sets *set, int num);
-void Union(Sets *set1, Sets *set2);
-void intersection(Sets *set1, Sets *set2);
-void difference();
+Sets Union(Sets *set1, Sets *set2);
+Sets intersection(Sets *set1, Sets *set2);
+Sets difference(Sets *set1, Sets *set2);
 
 //main function
 int main()
@@ -115,7 +115,7 @@ void delete(Sets *set, int num)
     }
 }
 
-void Union(Sets *set1, Sets *set2)
+Sets Union(Sets *set1, Sets *set2)
 {
     Sets set3 = {{}, 0};
     for(int i=0; i<set1->count; i++)
@@ -126,11 +126,10 @@ void Union(Sets *set1, Sets *set2)
     {
         insertSorted(&set3, set2->arr[i]);
     }
-    printf("Union: ");
-    display(&set3);
+    return set3;
 }
 
-void intersection(Sets *set1, Sets *set2)
+Sets intersection(Sets *set1, Sets *set2)
 {
     Sets set3 = {{}, 0};
     for(int i=0; i<set1->count; i++)
@@ -140,6 +139,18 @@ void intersection(Sets *set1, Sets *set2)
             insertSorted(&set3, set1->arr[i]);
         }
     }
-    printf("Intersection: ");
-    display(&set3);
+    return set3;
+}
+
+Sets difference(Sets *set1, Sets *set2)
+{
+    Sets set3 = {{}, 0};
+    for(int i=0; i<set1->count; i++)
+    {
+        if(find(set2, set1->arr[i]) == -1)
+        {
+            insertSorted(&set3, set1->arr[i]);
+        }
+    }
+    return set3;
 }
