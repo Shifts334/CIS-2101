@@ -25,7 +25,7 @@ void dequeue(); //Front
 
 //main function
 int main(){
-	queuePtr Qline;
+	queue Qline;
 	
 }
 
@@ -48,6 +48,8 @@ int isEmpty(queue *line){
 		return 0;
 	}
 }
+
+void enqueue(queue)
 
 
 
