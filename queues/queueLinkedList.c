@@ -8,32 +8,41 @@ typedef struct node{
     struct node *next;
     int front;
     int rear;
-}node;
+}Node, *NodePtr;
 
 typedef struct queue{
-	int front;
-	int rear;
-}queue;
+	NodePtr front, rear;
+}Queue, *QueuePtr;
 
 //prototypes
-void initialQ(queue *line);
-int isFull(queue *line);
-int isEmpty(queue *line);
+QueuePtr initialQ(); // the same as creating a queue
+Node createNode(int data);
+int isFull(QueuePtr);
+int isEmpty(QueuePtr);
 void enqueue(); //Rear
 void dequeue(); //Front
 
 
 //main function
 int main(){
-	queue Qline;
+	QueuePtr line = initialQ();
 	
 }
 
-void initialQ(queue *line){
-	line->front = line->rear = -1;
+QueuePtr initialQ(){
+	
+	QueuePtr newQueue = malloc(sizeof(Queue));
+	newQueue->front = newQueue->rear = -1;
+	return newQueue;
 }
 
-int isFull(queue *line){
+Nodeptr createNode(int new_data){
+	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
+	newNode->data = new_data;
+	newNode->next = NULL;
+}
+
+int isFull(QueuePtr line){
 	if((line->rear) == MAX -1){
 		return 1;
 	}else{
@@ -41,7 +50,7 @@ int isFull(queue *line){
 	}
 }
 
-int isEmpty(queue *line){
+int isEmpty(QueuePtr line){
 	if((line->front) == -1){
 		return 1;
 	}else{

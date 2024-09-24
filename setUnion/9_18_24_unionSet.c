@@ -101,7 +101,8 @@ int find(Sets *set, int num)
 
 void display(Sets *set)
 {
-    for(int i=0; i<set->count; i++)
+	int i;
+    for(i=0; i<set->count; i++)
     {
         printf("%d ", set->arr[i]);
     }
@@ -132,6 +133,7 @@ void insertSorted(Sets *set , int num)
 void delete(Sets *set, int num)
 {
     int i = find(set, num);
+    int j;
     if(isempty(set))
     {
         printf("Set is empty\n");
@@ -142,7 +144,7 @@ void delete(Sets *set, int num)
     }
     else
     {
-        for (int j=i; j<set->count-1; j++)
+        for ( j=i; j<set->count-1; j++)
         {
             set->arr[j] = set->arr[j+1];
         }
@@ -153,11 +155,12 @@ void delete(Sets *set, int num)
 Sets Union(Sets set1, Sets set2)
 {
     Sets set3 = {{}, 0};
-    for(int i=0; i<set1.count; i++)
+    int i;
+    for( i=0; i<set1.count; i++)
     {
         insertSorted(&set3, set1.arr[i]);
     }
-    for(int i=0; i<set2.count; i++)
+    for( i=0; i<set2.count; i++)
     {
         if(find(&set3, set2.arr[i]) == -1)
         {
@@ -170,7 +173,8 @@ Sets Union(Sets set1, Sets set2)
 Sets intersection(Sets set1, Sets set2)
 {
     Sets set3 = {{}, 0};
-    for(int i=0; i<set1.count; i++)
+    int i;
+    for( i=0; i<set1.count; i++)
     {
         if(find(&set2, set1.arr[i]) != -1)
         {
@@ -183,14 +187,15 @@ Sets intersection(Sets set1, Sets set2)
 Sets difference(Sets set1, Sets set2)
 {
     Sets set3 = {{}, 0};
-    for(int i=0; i<set1.count; i++)
+    int i;
+    for( i=0; i<set1.count; i++)
     {
         if(find(&set2, set1.arr[i]) == -1)
         {
             insertSorted(&set3, set1.arr[i]);
         }
     }
-    for(int i=0; i<set2.count; i++)
+    for(i=0; i<set2.count; i++)
     {
         if(find(&set1, set2.arr[i]) == -1)
         {
