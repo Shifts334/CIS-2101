@@ -68,9 +68,8 @@ void display(linklist *q){
     if(temp == NULL){
         printf("Queue is empty\n");
     }else{
-        while(temp != NULL){
+        for(; temp != NULL; temp = temp->next) {
             printf("%d ", temp->data);
-            temp = temp->next;
         }
         printf("\n");
     }
