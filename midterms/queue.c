@@ -14,21 +14,25 @@ typedef struct{
 typedef struct node {
 	int data;
 	struct node* link;
-}Node, *NodePtr;
+}*NodePtr;
 typedef struct{
 	NodePtr front, rear;
 }QueueLL;
 
 
 //prototypes of Array implementation
-QueueArray createQarr();
+void createQarr();
 bool isFullArr(QueueArray *a);
 bool isEmptyArr(QueueArray *a);
 void enqueueArr(QueueArray *a, int new_data);
 void dequeueArr(QueueArray *a);
 
 //prototypes of Linked List implementation 
-bool isFullLL(QueueLL a)
+QueueLL createQLL();
+bool isFullLL(QueueLL *b);
+bool isEmptyLL(QueueLL b);
+void enqueueLL(QueueLL *b, int new_data);
+void dequeueLL(QueueLL *b);
 
 //main Function
 int main(){
@@ -38,23 +42,58 @@ int main(){
 
 
 //function definition of array functions
-QueueArray createQarr(){
-	QueueArray q;
-	q.front = 0;
-	q.rear = MAX-1;
+void createQarr(){
+	q->front = 0;
+	q->rear = MAX-1;
 	return q;
 }
 
-bool isFull(QueueArray *a){
+bool isFullArr(QueueArray *a){
 	return(a->rear+2)%MAX == a->front;
 }
 
-bool isEmpty(QueueArray *a){
+bool isEmptyArr(QueueArray *a){
 	return(a->rear+1)%MAX == a->front;
 }
 
 void enqueueArr(QueueArray *a, int new_data){
-
+	if(isFullArr(*a)){
+		printf("Queue Overflow");
+		return;
+	}else{
+		a->rear = (a->rear+1)%MAX;
+		a->arr[a->rear] = new_data;
+	}
 }
 
+void dequeueArr(QueueArray *a){
+	if((*a->rear+2)%MAX == a->front){
+		printf("Empty.");
+		return;
+	}else{
+		a->front = (a->front+1) % MAX;
+	}
+}
+
+
 //function definition of linked list implementation
+void createQLL(){
+	QueueLL newQ;
+	newQ->front = NULL;
+	newQ->rear = NULL;
+}
+
+bool isEmptyLL(QueueLL b){
+	return (b->front == NULL && b->rear == NULL)?1:0;
+}
+
+bool isFull(QueueLL b){
+	
+}
+
+void enqueueLL(QueueLL *b, int new_data){
+	
+	if()
+}
+
+
