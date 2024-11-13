@@ -5,16 +5,16 @@
 typedef struct {
     char elem;
     int priority;
-}elems;
+} elems;
 
 // Store the element of a priority queue
-elems pr[100000];
+elems pr[10];
 
 // Pointer to the last index
 int size = -1;
 
 // Function to insert a new element into priority queue
-void enqueue(int elem, int priority) {
+void enqueue(char elem, int priority) {
     // Increase the size
     size++;
 
@@ -61,28 +61,28 @@ void dequeue() {
 // Driver Code
 int main() {
     // Function Call to insert elements as per the priority
-    enqueue(10, 2);
-    enqueue(14, 4);
-    enqueue(16, 4);
-    enqueue(12, 3);
+    enqueue('A', 2);
+    enqueue('B', 4);
+    enqueue('C', 4);
+    enqueue('D', 3);
 
     // Stores the top element at the moment
     int ind = peek();
-    printf("%d\n", pr[ind].elem);
+    printf("%c\n", pr[ind].elem);
 
     // Dequeue the top element
     dequeue();
 
     // Check the top element
     ind = peek();
-    printf("%d\n", pr[ind].elem);
+    printf("%c\n", pr[ind].elem);
 
     // Dequeue the top element
     dequeue();
 
     // Check the top element
     ind = peek();
-    printf("%d\n", pr[ind].elem);
+    printf("%c\n", pr[ind].elem);
 
     return 0;
 }
